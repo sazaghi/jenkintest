@@ -10,8 +10,9 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
+                bat 'npm install --save express'
                 bat 'npm install --save-dev supertest'
-            }
+        }
         }
         stage('Run Unit Tests') {
             steps {
