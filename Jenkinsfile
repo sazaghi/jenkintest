@@ -24,18 +24,17 @@ pipeline {
                 bat 'npm test integration.test.js'
             }
         }
-        stage('Deploy') {
+        stage('Deploy to GitHub') {
             steps {
-                script {
-                    echo "Deploying application..."
-                    // Gunakan 'bat' jika di Windows, atau 'sh' jika di Linux/MacOS
-                    bat '''
-                    echo Deploying application...
-                    xcopy *.* \\remote-server\path\to\deploy /E /H /C /I
-                    '''
-                }
+                bat '''
+                git config --global user.email "zaaghisaad@gmail.com"
+                git config --global user.name "sazaghi"
+                git add .
+                git commit -m "Deploying from Jenkins build #${env.BUILD_NUMBER}"
+                git push https://github.com/sazaghi/jenkintest.git main
+                '''
             }
-        }
+        
     }
 
     post {
