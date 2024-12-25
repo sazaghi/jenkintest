@@ -34,7 +34,7 @@ pipeline {
                 git push https://github.com/sazaghi/jenkintest.git main
                 '''
             }
-        
+        }
     }
 
     post {
