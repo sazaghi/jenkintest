@@ -9,17 +9,17 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
         stage('Run Unit Tests') {
             steps {
-                sh 'npm test'
+                bat 'npm test'
             }
         }
         stage('Run Integration Tests') {
             steps {
-                sh 'npm test integration.test.js'
+                bat 'npm test integration.test.js'
             }
         }
     }
