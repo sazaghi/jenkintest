@@ -10,10 +10,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
-<<<<<<< HEAD:jenkisnsfile
                 bat 'npm install --save-dev supertest'
-=======
->>>>>>> 3c33dbd57a40b216411ed9649015586b34a2d0b9:Jenkinsfile
             }
         }
         stage('Run Unit Tests') {
