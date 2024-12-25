@@ -9,17 +9,21 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
+<<<<<<< HEAD:jenkisnsfile
+                bat 'npm install --save-dev supertest'
+=======
+>>>>>>> 3c33dbd57a40b216411ed9649015586b34a2d0b9:Jenkinsfile
             }
         }
         stage('Run Unit Tests') {
             steps {
-                sh 'npm test'
+                bat 'npm test'
             }
         }
         stage('Run Integration Tests') {
             steps {
-                sh 'npm test integration.test.js'
+                bat 'npm test integration.test.js'
             }
         }
     }
