@@ -12,7 +12,7 @@ pipeline {
                 bat 'npm install'
                 bat 'npm install --save express'
                 bat 'npm install --save-dev supertest'
-        }
+            }
         }
         stage('Run Unit Tests') {
             steps {
@@ -24,13 +24,16 @@ pipeline {
                 bat 'npm test integration.test.js'
             }
         }
-        stage('Deploy'){
+        stage('Deploy') {
             steps {
-                sh '''
-                echo "Deploying application..."
-                scp -r ./* user@server:/path/to/deploy
-                ssh user@server "cd /path/to/deploy && npm start"
-                '''
+                script {
+                    echo "Deploying application..."
+                    // Gunakan 'bat' jika di Windows, atau 'sh' jika di Linux/MacOS
+                    bat '''
+                    echo Deploying application...
+                    xcopy *.* \\remote-server\path\to\deploy /E /H /C /I
+                    '''
+                }
             }
         }
     }
